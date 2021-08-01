@@ -1,9 +1,9 @@
 
 # Mutant
-Microservicio que identifica si un humano es mutante o no por medio de su cadena de ADN. También devuelve las estadisticas de las cadenas de ADN
+Microservicio que identifica si un humano es mutante o no por medio de su cadena de ADN. También devuelve las estadísticas de las cadenas de ADN previamente consultadas.
 
 # Instrucciones de como verificar una cadena de ADN.
-Para ejecutar el API, se debe hacer un llamado **HTTPS** con el metodo **POST** a la siguiente ruta:
+Para ejecutar el API, se debe hacer un llamado **HTTPS** con el método **POST** a la siguiente ruta:
 
 `URL`: [https://2ekuqbt0z5.execute-api.us-east-1.amazonaws.com/dev/mutant](https://2ekuqbt0z5.execute-api.us-east-1.amazonaws.com/dev/mutant)
 
@@ -35,8 +35,8 @@ status code: 200 OK
 ~~~
 status code: 403 Forbidden
 
-# Instrucciones para devolver las estadisticas de las cadenas de ADN consultadas 
-Para ejecutar el API, se debe hacer un llamado **HTTPS** con el metodo **GET** a la siguiente ruta:
+# Instrucciones para devolver las estadísticas de las cadenas de ADN consultadas 
+Para ejecutar el API, se debe hacer un llamado **HTTPS** con el método **GET** a la siguiente ruta:
 
 `URL`: [https://2ekuqbt0z5.execute-api.us-east-1.amazonaws.com/dev/stats](https://2ekuqbt0z5.execute-api.us-east-1.amazonaws.com/dev/stats)
 
@@ -71,7 +71,7 @@ Instalar los siguientes programas:
 	npm install
 ```
 
- 3. **Desplegar mircroservicio en AWS:**
+ 3. **Desplegar microservicio en AWS:**
 
 ```sh
 	serverless deploy --stage dev --region us-east-1 --account yourAccount --verbose
@@ -81,3 +81,4 @@ Instalar los siguientes programas:
  4. **Ejecutar pruebas y cobertura:**
 ```sh
 	npm run test
+```
