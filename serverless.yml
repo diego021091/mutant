@@ -1,0 +1,53 @@
+service: mutant-dna-validator
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: dev
+  region: us-east-1
+  profile: deploy-aws
+  environment:
+    VERIFIED_DNA_TABLE: verified-dna
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:PutItem
+      Resource:
+        - "arn:aws:dynamodb:${opt:region}:${opt:account}:table/${self:provider.environment.VERIFIED_DNA_TABLE}"
+
+functions:
+  validate-mutant:
+    handler: index.isMutant
+    memorySize: 128
+    description: checks if a DNA chain belongs to a mutant and saves it in database
+    events:
+      - http:
+          path: /mutant/
+          method: post
+  stats:
+    handler: index.stats
+    memorySize: 128
+    description: returns the stats of the validated dna strings
+    events:
+      - http:
+          path: /stats
+          method: get
+
+resources:
+  Resources:
+    VerifiedDnaTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: "dna"
+            AttributeType: "S"
+        KeySchema:
+          - AttributeName: "dna"
+            KeyType: "HASH"
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
+        TableName: ${self:provider.environment.VERIFIED_DNA_TABLE}

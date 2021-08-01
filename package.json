@@ -1,0 +1,31 @@
+{
+  "name": "mutant",
+  "version": "1.0.0",
+  "description": "Servicio que identifica si un humano es mutante o no",
+  "main": "index.js",
+  "scripts": {
+    "test": "env-cmd -f ./test/.env nyc --all --reporter=lcov --reporter=text-summary mocha --recursive \"./test/**/*.spec.js\" --reporter=nyan",
+    "deploy": "serverless deploy --stage dev --region us-east-1 --account 286459016137 --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github"
+  },
+  "author": "Diego Acosta",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.922.0"
+  },
+  "devDependencies": {
+    "aws-sdk-mock": "^1.7.0",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
+    "dirty-chai": "^2.0.1",
+    "env-cmd": "^10.1.0",
+    "mocha": "^5.2.0",
+    "nock": "^9.6.1",
+    "nyc": "^14.1.1",
+    "path": "^0.12.7",
+    "serverless": "^2.52.1"
+  }
+}
